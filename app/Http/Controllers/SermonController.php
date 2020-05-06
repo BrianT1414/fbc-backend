@@ -19,10 +19,10 @@ class SermonController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return Sermon::get();
+            return Sermon::orderBy('published_on', 'desc')->get();
         }
 
-        return Sermon::public()->get();
+        return Sermon::public()->orderBy('published_on', 'desc')->get();
     }
 
     /**
