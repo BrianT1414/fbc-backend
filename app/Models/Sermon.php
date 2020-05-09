@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Models\File;
 use App\Models\YoutubeVideo;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +21,7 @@ class Sermon extends Model
 
     public function getIsPublishedAttribute()
     {
-        if ($this->published_on->isPast()) {
+        if (Carbon::createFromFormat('Y-m-d H:i:s', $this->published_on, new \DateTimeZone('America/Chicago'))->isPast()) {
             return true;
         }
 
@@ -40,6 +41,6 @@ class Sermon extends Model
 
     public function scopePublic($query)
     {
-        return $query->where('published_on', '<', now());
+        return $query->where('published_on', '<', (new \DateTime("now", new \DateTimeZone('America/Chicago')))->format('Y-m-d H:i:s'));
     }
 }

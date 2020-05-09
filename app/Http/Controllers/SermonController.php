@@ -82,10 +82,10 @@ class SermonController extends Controller
      */
     public function show(Sermon $sermon)
     {
-        if (Auth::check()) {
-            return response()->json($sermon, 200);
-        } else {
+        if (!$sermon->isPublished && !Auth::check()) {
             return response()->json(['message' => 'unauthorized'], 401);
+        } else {
+            return response()->json($sermon, 200);
         }
     }
 
