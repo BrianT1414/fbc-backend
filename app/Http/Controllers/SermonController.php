@@ -47,7 +47,8 @@ class SermonController extends Controller
                     'driver' => 'public',
                     'path' => 'sermons/',
                     'name' => $name,
-                    'type' => 'audio'
+                    'type' => 'audio',
+                    'user_id' => Auth::user()->id
                 ]);
 
                 $file_id = $file->id;

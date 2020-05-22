@@ -20,5 +20,7 @@ Route::get('/', function () {
 Route::get('auth', 'AuthController@checkUser');
 Route::post('login', 'AuthController@login');
 Route::get('logout', 'AuthController@logout');
+Route::get('errors', 'ErrorController@index');
+Route::post('errors', 'ErrorController@store');
 
 Route::resource('sermons', 'SermonController');

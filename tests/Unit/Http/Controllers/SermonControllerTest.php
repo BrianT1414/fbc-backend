@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit\Http\Controllers;
 
 use Storage;
 use Tests\TestCase;
